@@ -4,7 +4,7 @@ Includes:
 
 - [mountebank](http://www.mbtest.org/)
 - Node.js 14
-- Alpine Linux
+- Alpine Linux / Debian (slim)
 
 ## Run
 
@@ -18,9 +18,13 @@ Pass variable `RUN_ARGS` to add additional `docker run` arguments.
 
 ## Build
 
-To build a new base image:
+Alpine Linux:
 
     docker/build_and_test_image
+
+Debian Buster (slim):
+
+    IMAGE_KIND="slimbuster" docker/build_and_test_image
 
 Pass variable `BUILD_DIR` to override the directory path where `Dockerfile` is.
 
@@ -28,12 +32,18 @@ Pass variable `BUILD_DIR` to override the directory path where `Dockerfile` is.
 
 Remember to `docker login` first.
 
-Push the image to a private Docker registry:
+Push the image to the private Docker registry:
 
-    REGISTRY_URL=https://your.private.registry/username \
+    REGISTRY_URL=https://your.azurecr.io \
       docker/tag_and_push_image
 
-Push the image to [Docker Hub](https://hub.docker.com):
+Tag and push the image as 'alpine' to [Docker Hub](https://hub.docker.com):
 
-    REGISTRY_URL=username \
+    REGISTRY_URL="$USER" \
+      docker/tag_and_push_image
+
+Tag and push the image as 'slimbuster' (note: build on Debian image first):
+
+    REGISTRY_URL="$USER" \
+    IMAGE_KIND=slimbuster \
       docker/tag_and_push_image

@@ -12,16 +12,16 @@ repo_root_path="$(cd "$this_path/.." && pwd)"
 : "${BUILD_ARGS:=""}"
 : "${BUILD_DIR:="$repo_root_path"}"
 
+: "${IMAGE_KIND:="alpine"}"
 : "${IMAGE_NAME:=${BUILD_DIR##*/}}"
-: "${IMAGE_TAG:="latest"}"
+: "${IMAGE_TAG:="$IMAGE_KIND"}"
 
 ### build ######################################################################
 
 docker build \
-  --file "$this_path/Dockerfile.alpine" \
+  --file "$this_path/Dockerfile.$IMAGE_KIND" \
   --pull \
   --no-cache \
-  --build-arg HOST_UID="$(id -u)" \
   $BUILD_ARGS \
   --tag "$IMAGE_NAME:$IMAGE_TAG" \
   "$BUILD_DIR"
