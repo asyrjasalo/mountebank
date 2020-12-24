@@ -2,23 +2,30 @@
 
 Includes:
 
-- Alpine Linux or Debian (slim)
+- Alpine Linux / Debian (slim)
 - Node.js 14
-- [mountebank](http://www.mbtest.org/) at [:2525](http://localhost:2525)
-- [proxy to jsonplaceholder](https://jsonplaceholder.typicode.com/) at [:8080](http://localhost:8080)
-- stateful response fakers for the proxy at [:8273](http://localhost:8273)
+- [mountebank](https://www.mbtest.org/) at [:2525](http://localhost:2525)
+- [proxy to jsonplaceholder](https://jsonplaceholder.typicode.com/) at [:8080](https://localhost:8080)
+- stateful response fakers for the above proxy at [:8273](http://localhost:8273)
 
-## Run
+## Run locally
 
-To build a new image based on `Dockerfile` and run it:
+Build a new image based on `Dockerfile` and run it:
 
     ./mountebank
 
-Pass variable `BUILD_ARGS` to add additional `docker build` arguments.
+Append any Mountebank command-line parameters:
 
-Pass variable `RUN_ARGS` to add additional `docker run` arguments.
+    ./mountebank --version
 
-## Build
+Pass variable `BUILD_ARGS` to include additional `docker build` arguments:
+
+    BUILD_ARGS="--build-arg FROM_IMAGE=asyrjasalo/mountebank:slimbuster" \
+        ./mountebank
+
+Pass variable `RUN_ARGS` to include additional `docker run` arguments.
+
+## Build a base image
 
 Alpine Linux:
 
@@ -30,7 +37,7 @@ Debian Buster (slim):
 
 Pass variable `BUILD_DIR` to override the directory path where `Dockerfile` is.
 
-## Push
+## Push the base image
 
 Remember to `docker login` first.
 
