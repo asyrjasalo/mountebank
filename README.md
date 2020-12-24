@@ -21,7 +21,7 @@ Append any Mountebank command-line parameters:
 Pass variable `BUILD_ARGS` to include additional `docker build` arguments:
 
     BUILD_ARGS="--build-arg FROM_IMAGE=asyrjasalo/mountebank:slimbuster" \
-        ./mountebank
+      ./mountebank
 
 Pass variable `RUN_ARGS` to include additional `docker run` arguments.
 
