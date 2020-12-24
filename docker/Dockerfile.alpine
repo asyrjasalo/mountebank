@@ -29,7 +29,7 @@ WORKDIR ${UHOME}
 ARG ADD_NPM_PACKAGES="mountebank"
 RUN npm install ${ADD_NPM_PACKAGES} --production --no-save
 
-COPY --chown=app:app testapi testapi
+COPY --chown=${UNAME}:${GNAME} testapi testapi
 
 EXPOSE 2525
 EXPOSE 8080
