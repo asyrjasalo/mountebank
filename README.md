@@ -2,15 +2,17 @@
 
 Includes:
 
-- [mountebank](http://www.mbtest.org/)
+- Alpine Linux or Debian (slim)
 - Node.js 14
-- Alpine Linux / Debian (slim)
+- [mountebank](http://www.mbtest.org/) at [:2525](http://localhost:2525)
+- [proxy to jsonplaceholder](https://jsonplaceholder.typicode.com/) at [:8080](http://localhost:8080)
+- stateful response fakers for the proxy at [:8273](http://localhost:8273)
 
 ## Run
 
 To build a new image based on `Dockerfile` and run it:
 
-    mountebank
+    ./mountebank
 
 Pass variable `BUILD_ARGS` to add additional `docker build` arguments.
 
