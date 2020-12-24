@@ -1,7 +1,7 @@
 {
   "imposters": [
     {
-      "name": "proxy -> jsonplaceholder",
+      "name": "jsonplaceholder.typicode.com",
       "port": 8080,
       "protocol": "http",
       "stubs": [
@@ -9,7 +9,7 @@
           "responses": [
             {
               "proxy": {
-                "to": "http://jsonplaceholder.typicode.com",
+                "to": "https://jsonplaceholder.typicode.com",
                 "mode": "proxyAlways",
                 "injectHeaders": {
                     "Accept-Encoding": "identity"
